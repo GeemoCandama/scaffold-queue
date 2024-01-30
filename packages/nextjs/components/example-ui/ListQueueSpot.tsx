@@ -5,24 +5,15 @@ import { HareIcon } from "./assets/HareIcon";
 import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
 import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
-export const ContractInteraction = () => {
-  const [videoId, setVideoId] = useState("");
-  const [minTime, setMinTime] = useState("");
-  const [playbackStartTime, setPlaybackStartTime] = useState("");
-
-  const calcPrice = minTime => {
-    if (Number(minTime)) {
-      return (Number(minTime) * 0.001).toString();
-    } else {
-      return (0).toString();
-    }
-  };
+export const ListQueueSpot = () => {
+  const [tokenId, setTokenId] = useState("");
+  const [price, setPrice] = useState("");
 
   const { writeAsync, isLoading } = useScaffoldContractWrite({
     contractName: "VideoQueue",
-    functionName: "enqueue",
-    args: [videoId, minTime, playbackStartTime],
-    value: calcPrice(minTime),
+    functionName: "listQueueSpot",
+    args: [tokenId, price],
+    value: "0",
   });
 
   return (
@@ -32,26 +23,20 @@ export const ContractInteraction = () => {
       <HareIcon className="absolute right-0 bottom-24" />
       <div className="flex flex-col w-full mx-5 sm:mx-8 2xl:mx-20">
         <div className="flex flex-col mt-6 px-7 py-8 bg-base-200 opacity-80 rounded-2xl shadow-lg border-2 border-primary">
-          <span className="text-4xl sm:text-6xl text-black">Queue A Video</span>
+          <span className="text-4xl sm:text-6xl text-black">List Queue Spot</span>
           <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-5">
             <div className="flex flex-col">
               <input
                 type="text"
-                placeholder="VIDEO ID HERE"
-                className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white"
-                onChange={e => setVideoId(e.target.value)}
+                placeholder="Token Id here"
+                className="mt-2 input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
+                onChange={e => setTokenId(e.target.value)}
               />
               <input
                 type="text"
-                placeholder="Minimum Playtime here"
+                placeholder="Enter Price Here"
                 className="mt-2 input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
-                onChange={e => setMinTime(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Playback Start Time 0 = start"
-                className="mt-2 input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
-                onChange={e => setPlaybackStartTime(e.target.value)}
+                onChange={e => setPrice(e.target.value)}
               />
             </div>
             <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
@@ -74,7 +59,7 @@ export const ContractInteraction = () => {
 
           <div className="mt-4 flex gap-2 items-start">
             <span className="text-sm leading-tight">Price:</span>
-            <div className="badge badge-warning">{calcPrice(minTime)} ETH + Gas</div>
+            <div className="badge badge-warning">Gas</div>
           </div>
         </div>
       </div>
