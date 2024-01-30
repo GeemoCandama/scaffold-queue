@@ -10,18 +10,6 @@ A prototype for an ethereum video jukebox.
 - 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
 - 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
 
-## Contents
-
-- [Requirements](#requirements)
-- [Quickstart](#quickstart)
-- [Deploying your Smart Contracts to a Live Network](#deploying-your-smart-contracts-to-a-live-network)
-- [Deploying your NextJS App](#deploying-your-nextjs-app)
-- [Disabling Type & Linting Error Checks](#disabling-type-and-linting-error-checks)
-  - [Disabling commit checks](#disabling-commit-checks)
-  - [Deploying to Vercel without any checks](#deploying-to-vercel-without-any-checks)
-  - [Disabling Github Workflow](#disabling-github-workflow)
-- [Contributing to Scaffold-ETH 2](#contributing-to-scaffold-eth-2)
-
 ## Requirements
 
 Before you begin, you need to install the following tools:
